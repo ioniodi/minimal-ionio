@@ -1,0 +1,97 @@
+<style>
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: square;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#map {
+        height: 500px;
+        width: 100%;
+}
+
+</style>
+
+<div class="row">
+ 	<div class="column">
+		<h1>Γραμματεία Τμήματος Πληροφορικής</h1>
+		<br/>
+		<ul class="contact">
+
+			{% if site.author.location %}
+			<li><i class="fa fa-fw fa-map-marker" aria-hidden="true">&nbsp;</i>{{ site.data.ui-text[site.locale].comment_form_email_label | default: "Email" }} <br/> {{ site.author.location }} <br/></li>
+			{% endif %}
+			<br/>
+			{% if site.author.phone %}
+			<li><i class="fa fa-fw fa-phone" aria-hidden="true">&nbsp;</i> Τηλέφωνο <br/> {{ site.author.phone }} <br/></li>
+			{% endif %}
+			<br/>
+			{% if site.author.fax %}
+			<li><i class="fa fa-fw fa-fax" aria-hidden="true">&nbsp;</i> Fax <br/> {{ site.author.fax }} <br/></li>
+			{% endif %}
+			<br/>
+			{% if site.author.email %}
+			<li><i class="fa fa-fw fa-envelope" aria-hidden="true">&nbsp;</i>{{ site.data.ui-text[site.locale].comment_form_email_label | default: "Email" }} <br/> {{ site.author.email }} <br/></li>
+			{% endif %}
+
+		</ul>
+		
+		<div class="page__footer-follow">
+		  <ul class="social-icons">
+		    {% if site.author.github %}
+		      <li><a href="https://github.com/{{ site.author.github }}"><i class="fab fa-fw fa-github-alt" aria-hidden="true"></i> GitHub </a></li>
+		    {% endif %}
+		    {% if site.facebook.username %}
+		      <li><a href="https://www.facebook.com/{{ site.facebook.username }}"><i class="fab fa-fw fa-facebook-f" aria-hidden="true"></i> Facebook </a></li>
+		    {% endif %}
+	 	    {% if site.author.youtube %}
+        <li><a href="https://youtube.com/{{ site.author.youtube }}"><i class="fab fa-fw fa-youtube-square" aria-hidden="true"></i> Youtube </a></li>
+        {% endif %}
+        <li><a href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | absolute_url }}{% endif %}"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed </a></li>
+    	    
+		  </ul>
+		</div>
+
+	</div>
+	<div class="column">
+		<br/><br/><br/>
+		<div id="map"></div>
+		<script>
+			function initMap() {
+				var uluru = {lat: 39.621379 , lng: 19.914771};
+				var map = new google.maps.Map(document.getElementById('map'), {
+			  	zoom: 17,
+			  	center: uluru
+			});
+			var marker = new google.maps.Marker({
+			position: uluru,
+			map: map
+			});
+		      }
+		    </script>
+		    <script async defer
+		    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrL8k0jthnOBC-WevE5TxRhnhjwteQHQI&callback=initMap">
+		    </script>
+
+	</div>
+</div>
