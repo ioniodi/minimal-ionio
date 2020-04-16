@@ -1,6 +1,6 @@
-<table>
-  <thead>
-    <tr>
+<table style="display: inline-table;">
+  <tbody>
+    <tr style="width: 100%;">
       <th>Κωδικός</th>
       <th>Εξάμηνο</th>
       <th>Τύπος</th>
@@ -8,8 +8,7 @@
       <th>Εργαστήρια</th>
       <th>ECTS</th>
     </tr>
-  </thead>
-  <tbody>
+    <tr style="width: 100%;">
       <td align="center">{{ page.code }}</td>
       <td align="center">{{ page.semester }}</td>
       {% assign category = "" %}
@@ -26,5 +25,6 @@
       <td align="center">{{ page.hours }}</td>
       <td align="center">{{ page.extra }}</td>
       <td align="center">{{ page.ects }}</td>
+    </tr>
   </tbody>
 </table>
