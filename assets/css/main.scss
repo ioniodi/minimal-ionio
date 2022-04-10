@@ -91,5 +91,6 @@ th {
 }
 
 .flex-container {
-  display: flex;
+  display: flex !important;
+  flex-wrap: wrap !important;
 }
