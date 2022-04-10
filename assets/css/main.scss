@@ -81,7 +81,7 @@ th {
   vertical-align: middle;
 }
 .rank_title {
-  grid-column: 1 / span 4;
+  align-self: flex-start;
 }
 .grid-container {
   display: none;
@@ -93,4 +93,5 @@ th {
 .flex-container {
   display: flex !important;
   flex-wrap: wrap !important;
+  align-items: flex-end;
 }
