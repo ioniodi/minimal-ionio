@@ -80,17 +80,10 @@ td,
 th {
   vertical-align: middle;
 }
-.rank_title {
-}
-.grid-container {
-  display: none;
-  float: inherit;
-  grid-template-columns: auto auto auto auto;
-  grid-gap: 50px;
-}
 
 .flex-container {
   display: flex !important;
   flex-wrap: wrap !important;
+  align-items: flex-end;
   gap: 50px;
 }
