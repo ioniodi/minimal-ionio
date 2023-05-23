@@ -1,0 +1,59 @@
+{% assign myArray = "Δευτέρα ,Τρίτη,Παρασκευή,Δευτέρα ,Παρασκευή " | split: "," %}
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="5">Πρόγραμμα Εξεταστικής Ά Εξαμήνου</th>
+    </tr>
+    <tr>
+      <tr>
+      <th> ΗΜΕΡΟΜΗΝΙΑ </th>
+      <th> ΗΜΕΡΑ </th>
+      <th> ΩΡΑ </th>
+      <th> ΜΑΘΗΜΑ </th>
+      <th> ΕΞΕΤΑΣΤΗΣ </th>
+    </tr>
+   </tr>
+</thead>
+  
+<tbody>
+    {% assign count = 0 %}
+    {% for i in site.courses %}
+     {% for j in myArray %}
+     {% if i.IN %} 
+      {% assign count = count | plus: 1 %}
+      {% for i in site.courses %}
+      {% if count == i.IN %}
+     <tr>
+      <td> 
+        {{ i.DATE }} 
+       </td>
+       <td> 
+         {{ j }}
+       </td>
+       <td>
+         {{ i.HOUR }}
+       </td>
+       <td>
+         <a href="{{ i.url | absolute_url }}">{{ i.title }}</a>
+       </td>
+       <td>
+         {% assign author = site.people | where: "ref", i.author | first %}
+           {% if author %}
+              <a href="{{ author.url | absolute_url }}">{{ author.title }}</a>
+            {% else %}
+             {{i.author}}
+         {% endif %}
+       </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+
+ </tbody>
+</table>
+    
