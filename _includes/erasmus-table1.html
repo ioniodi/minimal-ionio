@@ -20,11 +20,11 @@
 <tbody>
     {% assign counter = 0 %}
     {% for course in site.courses %}
-    {% if course.Erasmus_courses_with_English_instruction == "Ναι" %}
+    {% if course.Erasmus_courses_with_English_instruction == y %}
     {% assign counter = counter | plus: 1 %}
     {% for course in site.courses %}
     {% if counter == course.AA %}
-    {% if course.Erasmus_courses_with_English_instruction == "Ναι" %}
+    {% if course.Erasmus_courses_with_English_instruction == y %}
     <tr>
       <td style="text-align:center">
             {{ course.AA }} 
